@@ -74,7 +74,7 @@ export function LegalHero() {
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg bg-black/20 p-1 shadow-[0_0_50px_rgba(155,135,245,0.2)] ring-1 ring-white/10">
             <Image
-              src="https://wallpapers.com/images/hd/law-background-7jhb5odzgri9346l.jpg"
+              src="https://image.freepik.com/free-photo/judge-gavel-lady-justice-scales-purple-background-law-concept_253401-5302.jpg"
               alt="LegalCopilot App Dashboard Mockup"
               width={1920}
               height={1080}
