@@ -38,8 +38,8 @@ function NavLink({ href, children, isActive }: { href: string; children: React.R
       className={cn(
         "transition-all duration-300 relative px-4 py-2 rounded-full text-sm font-medium",
         isActive 
-          ? "bg-primary text-primary-foreground shadow-md" 
-          : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+          ? "bg-white/10 text-white shadow-md" 
+          : "text-white/70 hover:bg-white/10 hover:text-white"
       )}
     >
       {children}
@@ -102,13 +102,13 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
             </div>
           
             <nav className="hidden md:flex w-full items-center justify-between">
-              <div className="flex items-center gap-2 rounded-full bg-primary/10 p-2 border border-primary/20 shadow-lg backdrop-blur-sm">
+              <div className="flex items-center gap-2 rounded-full bg-primary/20 p-2 border border-primary/30 shadow-lg backdrop-blur-sm">
                 <Link
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold pr-4 pl-2"
                 >
-                  <Logo className="h-6 w-6 text-primary" />
-                  <span className="font-headline">LegalCopilot</span>
+                  <Logo className="h-6 w-6 text-white" />
+                  <span className="font-headline text-white">LegalCopilot</span>
                 </Link>
                 {navItems.map((item) => (
                   <NavLink key={item.href} href={item.href} isActive={pathname === item.href}>
@@ -119,7 +119,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
             </nav>
         </div>
       </header>
-      <main className="flex flex-1 flex-col">
+      <main className="flex flex-1 flex-col bg-background">
         {children}
       </main>
     </div>
