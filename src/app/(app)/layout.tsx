@@ -43,7 +43,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Logo } from '@/components/logo';
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/document-analysis', icon: FileScan, label: 'Document Analysis' },
   { href: '/argument-chain', icon: GitFork, label: 'Argument Chain' },
   { href: '/evidence-mapper', icon: Map, label: 'Evidence Mapper' },
