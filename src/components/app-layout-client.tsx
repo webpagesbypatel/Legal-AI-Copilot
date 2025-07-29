@@ -62,8 +62,8 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
   
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
-      <header className="sticky top-0 z-30 flex h-20 items-center border-b border-white/10 bg-background/80 px-4 backdrop-blur-xl md:px-6">
-        <div className="flex items-center gap-4 w-full">
+      <header className="sticky top-0 z-30 flex h-20 items-center justify-center border-b border-white/10 bg-background/80 px-4 backdrop-blur-xl md:px-6">
+        <div className="flex items-center gap-4 w-full max-w-7xl">
             <div className="md:hidden">
               <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger asChild>
@@ -101,23 +101,22 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
               </Sheet>
             </div>
           
-            <Link
-              href="/"
-              className="hidden items-center gap-2 text-lg font-semibold md:flex"
-            >
-              <Logo className="h-6 w-6 text-primary" />
-              <span className="font-headline">LegalCopilot</span>
-            </Link>
-
-          <nav className="hidden md:flex flex-1 items-center justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-black/30 p-2 border border-white/10 shadow-lg backdrop-blur-sm">
-            {navItems.map((item) => (
-              <NavLink key={item.href} href={item.href} isActive={pathname === item.href}>
-                {item.label}
-              </NavLink>
-            ))}
-            </div>
-          </nav>
+            <nav className="hidden md:flex w-full items-center justify-between">
+              <div className="flex items-center gap-2 rounded-full bg-black/30 p-2 border border-white/10 shadow-lg backdrop-blur-sm">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-lg font-semibold pr-4 pl-2"
+                >
+                  <Logo className="h-6 w-6 text-primary" />
+                  <span className="font-headline">LegalCopilot</span>
+                </Link>
+                {navItems.map((item) => (
+                  <NavLink key={item.href} href={item.href} isActive={pathname === item.href}>
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+            </nav>
         </div>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
