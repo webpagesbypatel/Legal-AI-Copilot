@@ -106,7 +106,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
               className="hidden items-center gap-2 text-lg font-semibold md:flex"
             >
               <Logo className="h-6 w-6 text-primary" />
-              <span className="sr-only">LegalCopilot</span>
+              <span className="font-headline">LegalCopilot</span>
             </Link>
 
           <nav className="hidden md:flex flex-1 items-center justify-center">
