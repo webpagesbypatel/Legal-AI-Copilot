@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'summarizeDocumentAnalysisPrompt',
   input: {schema: SummarizeDocumentAnalysisInputSchema},
   output: {schema: SummarizeDocumentAnalysisOutputSchema},
-  model: googleAI.model('gemini-1.0-pro'),
+  model: googleAI.model('gemini-pro'),
   prompt: `You are a legal AI assistant. Please summarize the key findings from the following document analysis:\n\n{{{analysisResult}}}`,
 });
 

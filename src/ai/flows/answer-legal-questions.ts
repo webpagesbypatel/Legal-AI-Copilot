@@ -37,7 +37,7 @@ const prompt = ai.definePrompt({
   name: 'answerLegalQuestionsPrompt',
   input: {schema: AnswerLegalQuestionsInputSchema},
   output: {schema: AnswerLegalQuestionsOutputSchema},
-  model: googleAI.model('gemini-1.0-pro'),
+  model: googleAI.model('gemini-pro'),
   prompt: `You are a legal assistant chatbot. A user will ask a question and you will answer it.
 
   Analyze the following legal question and provide a comprehensive answer.

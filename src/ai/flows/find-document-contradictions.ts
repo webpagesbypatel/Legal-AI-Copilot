@@ -37,7 +37,7 @@ const findDocumentContradictionsPrompt = ai.definePrompt({
   name: 'findDocumentContradictionsPrompt',
   input: {schema: FindDocumentContradictionsInputSchema},
   output: {schema: FindDocumentContradictionsOutputSchema},
-  model: googleAI.model('gemini-1.0-pro'),
+  model: googleAI.model('gemini-pro'),
   prompt: `You are an expert legal analyst tasked with identifying contradictions between two documents.
 
   Analyze the two documents provided below and generate a detailed report outlining any logical or factual inconsistencies.
