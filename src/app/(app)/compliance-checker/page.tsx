@@ -10,12 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from '@/components/ui/skeleton';
 import { ShieldCheck, FileWarning, FileCheck2 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-
-type ComplianceResult = {
-    statute: string;
-    compliant: boolean;
-    details: string;
-};
+import { checkCompliance, ComplianceResult } from '@/ai/flows/check-compliance';
 
 const statutes = [
     { id: "it-act", label: "IT Act, 2000" },
@@ -36,7 +31,7 @@ export default function ComplianceCheckerPage() {
         );
     };
 
-    const handleCheckCompliance = () => {
+    const handleCheckCompliance = async () => {
         if (!documentText.trim() || selectedStatutes.length === 0) {
             toast({
                 title: 'Error',
@@ -49,21 +44,20 @@ export default function ComplianceCheckerPage() {
         setIsLoading(true);
         setResults(null);
 
-        // This is a placeholder for the actual GenAI call.
-        setTimeout(() => {
-            const dummyResults: ComplianceResult[] = selectedStatutes.map(id => {
-                const compliant = Math.random() > 0.3;
-                return {
-                    statute: statutes.find(s => s.id === id)?.label || '',
-                    compliant,
-                    details: compliant
-                        ? 'All key clauses appear to be compliant.'
-                        : 'Potential non-compliance found in section 4.2 regarding data retention policies.',
-                };
+        try {
+            const statuteLabels = selectedStatutes.map(id => statutes.find(s => s.id === id)!.label);
+            const response = await checkCompliance({ documentText, statutes: statuteLabels });
+            setResults(response.results);
+        } catch (error) {
+            console.error(error);
+            toast({
+                title: 'Compliance Check Failed',
+                description: 'An error occurred during the compliance check. Please try again.',
+                variant: 'destructive',
             });
-            setResults(dummyResults);
+        } finally {
             setIsLoading(false);
-        }, 1500);
+        }
     };
 
     return (
