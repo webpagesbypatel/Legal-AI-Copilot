@@ -1,11 +1,15 @@
-import { Features } from "@/components/sections/features";
 import { LegalHero } from "@/components/sections/hero-legal";
+import { FeaturesSection } from "@/components/sections/features-legal";
+import { HowItWorksSection } from "@/components/sections/how-it-works";
+import { Footer } from "@/components/sections/footer-legal";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="bg-[#0a0613]">
       <LegalHero />
-      <Features />
+      <FeaturesSection />
+      <HowItWorksSection />
+      <Footer />
     </main>
   );
 }

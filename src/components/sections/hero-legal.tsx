@@ -13,7 +13,7 @@ export function LegalHero() {
         background: "linear-gradient(135deg, #0a0613 0%, #150d27 100%)",
       }}
     >
-      <div
+       <div
         className="absolute right-0 top-0 h-1/2 w-1/2"
         style={{
           background:
@@ -49,10 +49,10 @@ export function LegalHero() {
  
           <div className="mb-10 sm:mb-0 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/document-analysis"
+              href="/login"
               className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
             >
-              Get Started
+              Start Your Free Trial
             </Link>
             <a
               href="#features"
@@ -70,7 +70,6 @@ export function LegalHero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         >
           <div className="w-full absolute top-[-50px] md:top-[-100px] left-0 h-40 md:h-64 -z-10 overflow-hidden">
-             {/* Abstract background element */}
              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_rgba(155,135,245,0.1)_0%,transparent_80%)]" />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
