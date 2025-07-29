@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -7,30 +8,11 @@ import {
   Bot,
   FileScan,
   GitFork,
-  LayoutDashboard,
   Map,
-  Scale,
-  Search,
-  Settings,
   ShieldCheck,
-  User,
   GitCommitVertical,
-  Home,
+  Menu,
 } from 'lucide-react';
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarProvider,
-  SidebarInset,
-  SidebarTrigger,
-  SidebarFooter,
-  SidebarMenuBadge,
-} from '@/components/ui/sidebar';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -40,8 +22,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Logo } from '@/components/logo';
+import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/document-analysis', icon: FileScan, label: 'Document Analysis' },
@@ -52,65 +40,90 @@ const navItems = [
   { href: '/compliance-checker', icon: ShieldCheck, label: 'Compliance Checker' },
 ];
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
+  const isActive = pathname === href;
 
   return (
-    <SidebarProvider>
-      <Sidebar side="left" collapsible="icon" variant="sidebar">
-        <SidebarHeader className="items-center justify-center gap-2 p-4 text-lg font-semibold tracking-wider text-sidebar-foreground group-data-[collapsible=icon]:hidden font-headline">
-          <Link href="/" className='flex items-center gap-2'>
-            <Logo className="h-7 w-7 text-primary" />
-            LegalCopilot
-          </Link>
-        </SidebarHeader>
+    <Link
+      href={href}
+      className={cn(
+        "transition-colors hover:text-foreground/80",
+        isActive ? "text-foreground" : "text-foreground/60"
+      )}
+    >
+      {children}
+    </Link>
+  );
+}
 
-        <SidebarContent className="p-2">
-          <SidebarMenu>
-            {navItems.map((item) => (
-              <SidebarMenuItem key={item.href}>
-                <Link href={item.href}>
-                  <SidebarMenuButton
-                    isActive={pathname === item.href}
-                    tooltip={item.label}
-                  >
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </SidebarMenuButton>
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <div className="flex min-h-screen w-full flex-col bg-muted/40">
+      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold md:text-base"
+          >
+            <Logo className="h-6 w-6 text-primary" />
+            <span className="sr-only">LegalCopilot</span>
+          </Link>
+          {navItems.map((item) => (
+            <NavLink key={item.href} href={item.href}>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="shrink-0 md:hidden"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <nav className="grid gap-6 text-lg font-medium">
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-lg font-semibold"
+                onClick={() => setOpen(false)}
+              >
+                <Logo className="h-6 w-6 text-primary" />
+                <span className="font-headline">LegalCopilot</span>
+              </Link>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-foreground"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
                 </Link>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarContent>
-        <SidebarFooter className="p-2">
-           <SidebarMenu>
-              <SidebarMenuItem>
-                <Link href="#">
-                  <SidebarMenuButton tooltip="Settings">
-                    <Settings />
-                    <span>Settings</span>
-                  </SidebarMenuButton>
-                </Link>
-              </SidebarMenuItem>
-            </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset>
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-          <SidebarTrigger className="sm:hidden" />
-          <div className="relative ml-auto flex-1 md:grow-0">
-          </div>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+        <div className="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                variant="outline"
+                variant="secondary"
                 size="icon"
-                className="overflow-hidden rounded-full"
+                className="rounded-full"
               >
-                <Avatar>
+                <Avatar className="h-8 w-8">
                   <AvatarImage src="https://placehold.co/32x32" alt="@shadcn" />
                   <AvatarFallback>LA</AvatarFallback>
                 </Avatar>
+                <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -122,11 +135,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-          {children}
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+        </div>
+      </header>
+      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+        {children}
+      </main>
+    </div>
   );
 }
