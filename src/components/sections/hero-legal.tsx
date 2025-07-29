@@ -74,12 +74,13 @@ export function LegalHero() {
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
             <Image
-              src="https://images.unsplash.com/photo-1589216532372-1c2a36790049?q=80&w=1920&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1683009427598-9c21a169ff2c?q=80&w=1920&auto=format&fit=crop"
               alt="LegalCopilot App Dashboard Mockup"
               width={1920}
               height={1080}
               className="h-auto w-full rounded-lg border border-white/10"
               priority
+              data-ai-hint="legal justice"
             />
           </div>
         </motion.div>
