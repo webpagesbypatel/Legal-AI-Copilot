@@ -40,7 +40,7 @@ const compliancePrompt = ai.definePrompt({
   name: 'compliancePrompt',
   input: {schema: CheckComplianceInputSchema},
   output: {schema: CheckComplianceOutputSchema},
-  model: googleAI.model('gemini-1.5-flash'),
+  model: googleAI.model('gemini-pro'),
   prompt: `You are an expert legal AI specializing in compliance.
   Analyze the provided document text for compliance with the following Indian statutes: {{#each statutes}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}.
 
