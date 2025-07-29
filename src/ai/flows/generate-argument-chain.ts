@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'generateArgumentChainPrompt',
   input: {schema: GenerateArgumentChainInputSchema},
   output: {schema: GenerateArgumentChainOutputSchema},
-  model: googleAI.model('gemini-pro'),
+  model: googleAI.model('gemini-1.5-flash-latest'),
   prompt: `You are an expert legal strategist. Your task is to generate potential argument chains that lead to the desired legal outcome provided by the user.
 
   Desired Legal Outcome: {{{legalOutcome}}}
