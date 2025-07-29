@@ -15,19 +15,10 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
@@ -127,32 +118,6 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
             ))}
             </div>
           </nav>
-          
-          <div className="flex items-center gap-4 md:gap-2 lg:gap-4">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="secondary"
-                  size="icon"
-                  className="rounded-full"
-                >
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://placehold.co/32x32" alt="@shadcn" data-ai-hint="avatar" />
-                    <AvatarFallback>LA</AvatarFallback>
-                  </Avatar>
-                  <span className="sr-only">Toggle user menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
         </div>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
