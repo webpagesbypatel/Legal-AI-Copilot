@@ -39,7 +39,7 @@ function NavLink({ href, children, isActive }: { href: string; children: React.R
         "transition-all duration-300 relative px-4 py-2 rounded-md text-sm font-medium",
         isActive 
           ? "bg-primary text-primary-foreground shadow-md" 
-          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+          : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
       )}
     >
       {children}
@@ -62,7 +62,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
   
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
-      <header className="sticky top-0 z-30 flex h-20 items-center border-b bg-background px-4 md:px-6">
+      <header className="sticky top-0 z-30 flex h-20 items-center border-b border-white/10 bg-background/95 px-4 backdrop-blur-sm md:px-6">
         <div className="flex items-center gap-4 w-full">
             <div className="md:hidden">
               <Sheet open={open} onOpenChange={setOpen}>
@@ -76,7 +76,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
                     <span className="sr-only">Toggle navigation menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="left">
+                <SheetContent side="left" className="bg-background/95">
                   <nav className="grid gap-6 text-lg font-medium">
                     <Link
                       href="/"
@@ -110,7 +110,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
             </Link>
 
           <nav className="hidden md:flex flex-1 items-center justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-muted/60 p-2 border shadow-inner">
+            <div className="flex items-center gap-2 rounded-full bg-muted/60 p-2 border border-white/10 shadow-inner">
             {navItems.map((item) => (
               <NavLink key={item.href} href={item.href} isActive={pathname === item.href}>
                 {item.label}
