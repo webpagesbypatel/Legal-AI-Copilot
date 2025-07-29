@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -87,7 +88,7 @@ export default function ChatbotPage() {
         <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <div className="mx-auto grid w-full flex-1 auto-rows-max gap-4">
                 <div className="flex items-center gap-4">
-                    <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0 font-headline">
+                    <h1 className="flex-1 shrink-0 whitespace-nownowrap text-xl font-semibold tracking-tight sm:grow-0 font-headline">
                         AI Legal Assistant
                     </h1>
                 </div>
@@ -129,7 +130,7 @@ export default function ChatbotPage() {
                                                 : 'bg-muted'
                                         )}
                                     >
-                                        <p className="whitespace-pre-wrap">{message.content}</p>
+                                        <p className="whitespace-pre-wrap break-words">{message.content}</p>
                                     </div>
                                 ))
                             )}
