@@ -25,10 +25,10 @@ export function HowItWorksSection() {
                             The law is global. Our AI analyzes legal frameworks and case law from multiple jurisdictions, providing you with international insights to build more robust and worldly arguments. Uncover novel strategies by seeing how similar cases are won across the globe.
                         </p>
                          <Link
-                            href="/contradiction-finder"
+                            href="/document-analysis"
                             className="inline-block rounded-full px-6 py-3 text-white transition-colors bg-[#9b87f5]/20 hover:bg-[#9b87f5]/30"
                         >
-                            Explore Global Insights
+                            Go to App
                         </Link>
                     </motion.div>
                      <motion.div 
