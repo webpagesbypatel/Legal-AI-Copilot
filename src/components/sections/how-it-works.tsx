@@ -23,11 +23,11 @@ export function HowItWorksSection() {
                     </div>
                      <div className="overflow-hidden rounded-lg bg-[#100a1f] p-4 shadow-[0_0_50px_rgba(155,135,245,0.2)]">
                         <Image
-                            src="https://blocks.mvp-subha.me/assets/earth.png"
+                            src="https://image.freepik.com/free-photo/judge-gavel-lady-justice-scales-purple-background-law-concept_253401-5302.jpg"
                             alt="Global Legal Insights"
                             width={1920}
                             height={1080}
-                            data-ai-hint="data analysis"
+                            data-ai-hint="justice law"
                             className="h-auto w-full"
                         />
                     </div>
