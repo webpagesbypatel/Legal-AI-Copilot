@@ -86,3 +86,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Add the following custom style */
+.neumorphic-button::after {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300 bg-gradient-to-br from-[#9b87f5]/20 to-transparent rounded-full;
+}
+  
+.neumorphic-button:hover::after {
+  @apply opacity-100;
+}

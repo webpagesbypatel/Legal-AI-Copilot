@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   User,
   GitCommitVertical,
+  Home,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -58,8 +59,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <Sidebar side="left" collapsible="icon" variant="sidebar">
         <SidebarHeader className="items-center justify-center gap-2 p-4 text-lg font-semibold tracking-wider text-sidebar-foreground group-data-[collapsible=icon]:hidden font-headline">
-          <Logo className="h-7 w-7 text-primary" />
-          LegalCopilot
+          <Link href="/" className='flex items-center gap-2'>
+            <Logo className="h-7 w-7 text-primary" />
+            LegalCopilot
+          </Link>
         </SidebarHeader>
 
         <SidebarContent className="p-2">
