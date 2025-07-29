@@ -29,7 +29,7 @@ export function HowItWorksSection() {
                         <div className="mt-10 flex justify-center">
                              <Link
                                 href="/document-analysis"
-                                className="group inline-flex items-center gap-3 rounded-full bg-[#9b87f5]/20 px-8 py-4 text-lg text-white transition-colors hover:bg-[#9b87f5]/30"
+                                className="group neumorphic-button hover:shadow-[0_0_20px_rgba(155,135,245,0.5)] relative inline-flex w-full overflow-hidden items-center justify-center gap-3 rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-lg text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
                             >
                                 <span>Go to App</span>
                                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
