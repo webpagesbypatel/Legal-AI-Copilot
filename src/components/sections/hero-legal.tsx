@@ -23,6 +23,7 @@ export function LegalHero() {
           alt="Legal background"
           layout="fill"
           objectFit="cover"
+          objectPosition="center"
           className="opacity-40"
           priority
           data-ai-hint="legal justice"
@@ -31,7 +32,7 @@ export function LegalHero() {
       </div>
  
       <div className="container relative z-10 mx-auto max-w-2xl px-4 text-center md:max-w-4xl md:px-6 lg:max-w-7xl">
-        {isMounted && <motion.div
+        {isMounted ? <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -64,7 +65,7 @@ export function LegalHero() {
               <ChevronDown className="h-4 w-4" />
             </a>
           </div>
-        </motion.div>}
+        </motion.div> : null}
       </div>
     </section>
   );
