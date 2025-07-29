@@ -16,7 +16,7 @@ export function LegalHero() {
           alt="Legal background"
           layout="fill"
           objectFit="cover"
-          className="opacity-20"
+          className="opacity-40"
           priority
           data-ai-hint="legal justice"
         />
