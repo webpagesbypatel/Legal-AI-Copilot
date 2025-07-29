@@ -1,11 +1,18 @@
 "use client";
- 
+
+import * as React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
  
 export function LegalHero() {
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section
       className="relative w-full overflow-hidden bg-black pb-20 pt-32 font-light text-white antialiased md:pb-24 md:pt-40"
@@ -24,7 +31,7 @@ export function LegalHero() {
       </div>
  
       <div className="container relative z-10 mx-auto max-w-2xl px-4 text-center md:max-w-4xl md:px-6 lg:max-w-7xl">
-        <motion.div
+        {isMounted && <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -57,7 +64,7 @@ export function LegalHero() {
               <ChevronDown className="h-4 w-4" />
             </a>
           </div>
-        </motion.div>
+        </motion.div>}
       </div>
     </section>
   );

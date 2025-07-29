@@ -1,18 +1,23 @@
-
-
 "use client";
 
+import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export function HowItWorksSection() {
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
     return (
         <section className="w-full overflow-hidden bg-[#100a1f] py-20 sm:py-32">
             <div className="container mx-auto max-w-7xl px-4 md:px-6">
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                    <motion.div 
+                    {isMounted && <motion.div 
                         className="text-white"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -35,8 +40,8 @@ export function HowItWorksSection() {
                                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </div>
-                    </motion.div>
-                     <motion.div 
+                    </motion.div>}
+                     {isMounted && <motion.div 
                         className="relative"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +57,7 @@ export function HowItWorksSection() {
                             data-ai-hint="justice law"
                             className="relative h-auto w-full rounded-lg"
                         />
-                    </motion.div>
+                    </motion.div>}
                 </div>
             </div>
         </section>
