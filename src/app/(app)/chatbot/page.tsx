@@ -7,10 +7,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { answerLegalQuestions } from '@/ai/flows/answer-legal-questions';
+import { answerLegalQuestions, AnswerLegalQuestionsOutput } from '@/ai/flows/answer-legal-questions';
 import { translateLegalDocument } from '@/ai/flows/translate-legal-documents';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Bot, Languages, Send, User } from 'lucide-react';
+import { Bot, Languages, Send, User, CheckCircle2 } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -18,7 +18,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 type Message = {
   id: string;
   role: 'user' | 'assistant';
-  content: string;
+  content: string | AnswerLegalQuestionsOutput;
 };
 
 type ChatMode = 'question' | 'translate';
@@ -59,7 +59,7 @@ export default function ChatbotPage() {
         setInput('');
 
         try {
-            let response: { answer?: string; translatedText?: string };
+            let response: AnswerLegalQuestionsOutput | { translatedText?: string };
             if (mode === 'question') {
                 response = await answerLegalQuestions({ question: input });
             } else {
@@ -69,7 +69,7 @@ export default function ChatbotPage() {
             const assistantMessage: Message = {
                 id: (Date.now() + 1).toString(),
                 role: 'assistant',
-                content: response.answer || response.translatedText || 'Sorry, I could not process that.',
+                content: response,
             };
             setMessages((prev) => [...prev, assistantMessage]);
         } catch (error) {
@@ -83,12 +83,48 @@ export default function ChatbotPage() {
             setIsLoading(false);
         }
     };
+    
+    const renderMessageContent = (content: Message['content']) => {
+        if (typeof content === 'string') {
+            return <p className="whitespace-pre-wrap break-words">{content}</p>;
+        }
+
+        if ('translatedText' in content && content.translatedText) {
+             return <p className="whitespace-pre-wrap break-words">{content.translatedText}</p>;
+        }
+
+        if ('answer' in content && content.answer) {
+             return <p className="whitespace-pre-wrap break-words">{content.answer}</p>;
+        }
+
+        if ('structuredAnswer' in content && content.structuredAnswer) {
+            const { title, description, steps } = content.structuredAnswer;
+            return (
+                <div className="space-y-3">
+                    <h4 className="font-semibold">{title}</h4>
+                    <p className="text-sm whitespace-pre-wrap break-words">{description}</p>
+                    {steps && steps.length > 0 && (
+                        <ul className="space-y-2 pt-2">
+                            {steps.map((step, index) => (
+                                <li key={index} className="flex items-start gap-2">
+                                    <CheckCircle2 className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                                    <span className="flex-1 text-sm whitespace-pre-wrap break-words">{step}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            );
+        }
+
+        return <p className="whitespace-pre-wrap break-words">Sorry, I could not process that.</p>;
+    };
 
     return (
         <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <div className="mx-auto grid w-full flex-1 auto-rows-max gap-4">
                 <div className="flex items-center gap-4">
-                    <h1 className="flex-1 shrink-0 whitespace-nownowrap text-xl font-semibold tracking-tight sm:grow-0 font-headline">
+                    <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0 font-headline">
                         AI Legal Assistant
                     </h1>
                 </div>
@@ -130,14 +166,17 @@ export default function ChatbotPage() {
                                                 : 'bg-muted'
                                         )}
                                     >
-                                        <p className="whitespace-pre-wrap break-words">{message.content}</p>
+                                       {renderMessageContent(message.content)}
                                     </div>
                                 ))
                             )}
                             {isLoading && (
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 p-4">
                                     <Skeleton className="h-8 w-8 rounded-full" />
-                                    <Skeleton className="h-6 w-[150px]" />
+                                    <div>
+                                      <Skeleton className="h-4 w-[150px]" />
+                                      <Skeleton className="h-4 w-[100px] mt-2" />
+                                    </div>
                                 </div>
                             )}
                             </div>
