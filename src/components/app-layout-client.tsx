@@ -102,7 +102,7 @@ export function AppLayoutClient({ children }: { children: React.ReactNode }) {
             </div>
           
             <nav className="hidden md:flex w-full items-center justify-between">
-              <div className="flex items-center gap-2 rounded-full bg-black/30 p-2 border border-white/10 shadow-lg backdrop-blur-sm">
+              <div className="flex items-center gap-2 rounded-full bg-primary/10 p-2 border border-primary/20 shadow-lg backdrop-blur-sm">
                 <Link
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold pr-4 pl-2"
