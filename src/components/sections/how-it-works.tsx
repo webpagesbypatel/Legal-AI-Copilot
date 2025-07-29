@@ -1,5 +1,9 @@
+
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function HowItWorksSection() {
     return (
@@ -21,7 +25,12 @@ export function HowItWorksSection() {
                             Explore Global Insights
                         </Link>
                     </div>
-                     <div className="overflow-hidden rounded-lg bg-[#100a1f] p-4 shadow-[0_0_50px_rgba(155,135,245,0.2)]">
+                     <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                        className="overflow-hidden rounded-lg bg-[#100a1f] p-4 shadow-[0_0_50px_rgba(155,135,245,0.2)]">
                         <Image
                             src="https://image.freepik.com/free-photo/judge-gavel-lady-justice-scales-purple-background-law-concept_253401-5302.jpg"
                             alt="Global Legal Insights"
@@ -30,7 +39,7 @@ export function HowItWorksSection() {
                             data-ai-hint="justice law"
                             className="h-auto w-full"
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
