@@ -36,7 +36,7 @@ function NavLink({ href, children, isActive }: { href: string; children: React.R
     <Link
       href={href}
       className={cn(
-        "transition-all duration-300 relative px-4 py-2 rounded-md text-sm font-medium",
+        "transition-all duration-300 relative px-4 py-2 rounded-full text-sm font-medium",
         isActive 
           ? "bg-primary text-primary-foreground shadow-md" 
           : "text-muted-foreground hover:bg-muted/80 hover:text-foreground"
