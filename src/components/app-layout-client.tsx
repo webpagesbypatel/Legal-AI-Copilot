@@ -24,7 +24,7 @@ import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/features', icon: LayoutGrid, label: 'Features' },
+  { href: '/', icon: LayoutGrid, label: 'Features' },
   { href: '/document-analysis', icon: FileScan, label: 'Document Analysis' },
   { href: '/argument-chain', icon: GitFork, label: 'Argument Chain' },
   { href: '/evidence-mapper', icon: Map, label: 'Evidence Mapper' },
