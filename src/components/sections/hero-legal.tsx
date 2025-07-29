@@ -4,14 +4,23 @@ import * as React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Loader2 } from "lucide-react";
+import { useRouter } from 'next/navigation';
  
 export function LegalHero() {
   const [isMounted, setIsMounted] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const router = useRouter();
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const handleGetStartedClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    router.push('/document-analysis');
+  };
 
   return (
     <section
@@ -53,9 +62,17 @@ export function LegalHero() {
           <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/document-analysis"
-              className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
+              onClick={handleGetStartedClick}
+              className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative inline-flex items-center justify-center w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
             >
-              Get Started
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Please wait...
+                </>
+              ) : (
+                'Get Started'
+              )}
             </Link>
             <a
               href="#features"
