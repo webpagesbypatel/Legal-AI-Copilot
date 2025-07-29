@@ -23,7 +23,7 @@ export function HowItWorksSection() {
                     </div>
                      <div className="overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
                         <Image
-                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop"
+                            src="https://blocks.mvp-subha.me/assets/earth.png"
                             alt="Data analysis dashboard showing charts and graphs"
                             width={1920}
                             height={1080}
