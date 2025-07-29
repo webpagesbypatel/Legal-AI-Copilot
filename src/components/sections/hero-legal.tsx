@@ -49,10 +49,10 @@ export function LegalHero() {
  
           <div className="mb-10 sm:mb-0 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/login"
+              href="/document-analysis"
               className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
             >
-              Start Your Free Trial
+              Get Started
             </Link>
             <a
               href="#features"
