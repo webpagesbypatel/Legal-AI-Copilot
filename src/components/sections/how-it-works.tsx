@@ -3,13 +3,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function HowItWorksSection() {
     return (
-        <section className="w-full py-20 sm:py-32">
+        <section className="w-full overflow-hidden py-20 sm:py-32">
             <div className="container mx-auto max-w-7xl px-4 md:px-6">
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-                    <div className="text-white">
+                    <motion.div 
+                        className="text-white"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
                         <span className="mb-4 inline-block rounded-full border border-[#9b87f5]/30 px-3 py-1 text-xs uppercase tracking-wider text-[#9b87f5]">
                           AI in Action
                         </span>
@@ -23,8 +30,14 @@ export function HowItWorksSection() {
                         >
                             Explore Global Insights
                         </Link>
-                    </div>
-                     <div className="overflow-hidden rounded-lg bg-[#100a1f] p-4 shadow-[0_0_50px_rgba(155,135,245,0.2)]">
+                    </motion.div>
+                     <motion.div 
+                        className="overflow-hidden rounded-lg bg-[#100a1f] p-4 shadow-[0_0_50px_rgba(155,135,245,0.2)]"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                     >
                         <Image
                             src="https://image.freepik.com/free-photo/judge-gavel-lady-justice-scales-purple-background-law-concept_253401-5302.jpg"
                             alt="Global Legal Insights"
@@ -33,7 +46,7 @@ export function HowItWorksSection() {
                             data-ai-hint="justice law"
                             className="h-auto w-full"
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
