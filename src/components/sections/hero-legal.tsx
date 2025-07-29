@@ -74,7 +74,7 @@ export function LegalHero() {
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
             <Image
-              src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlYXJ0aCUyMHBuZ3xlbnwwfHx8fDE3NTM3OTc1NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+              src="https://images.unsplash.com/photo-1676181739859-08330dea8999?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOHx8bGVnYWwlMjB8ZW58MHx8fHwxNzUzNzk3OTMyfDA&ixlib=rb-4.1.0&q=80&w=1080"
               alt="LegalCopilot App Dashboard Mockup"
               width={1920}
               height={1080}
