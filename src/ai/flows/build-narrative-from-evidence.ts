@@ -8,6 +8,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const BuildNarrativeFromEvidenceInputSchema = z.object({
@@ -28,6 +29,7 @@ const prompt = ai.definePrompt({
   name: 'buildNarrativeFromEvidencePrompt',
   input: {schema: BuildNarrativeFromEvidenceInputSchema},
   output: {schema: BuildNarrativeFromEvidenceOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are an expert legal professional skilled at constructing compelling legal narratives from provided evidence.
 
   Given the following evidence, construct a clear and concise narrative of the case.

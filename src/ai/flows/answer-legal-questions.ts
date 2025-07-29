@@ -1,5 +1,3 @@
-// A flow for answering legal questions via a chatbot interface.
-
 'use server';
 
 /**
@@ -11,6 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const AnswerLegalQuestionsInputSchema = z.object({
@@ -31,6 +30,7 @@ const prompt = ai.definePrompt({
   name: 'answerLegalQuestionsPrompt',
   input: {schema: AnswerLegalQuestionsInputSchema},
   output: {schema: AnswerLegalQuestionsOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are a legal assistant chatbot. A user will ask a question and you will answer it.
 
 Question: {{{question}}}`,

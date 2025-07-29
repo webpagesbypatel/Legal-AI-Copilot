@@ -9,6 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const SummarizeDocumentAnalysisInputSchema = z.object({
@@ -33,6 +34,7 @@ const prompt = ai.definePrompt({
   name: 'summarizeDocumentAnalysisPrompt',
   input: {schema: SummarizeDocumentAnalysisInputSchema},
   output: {schema: SummarizeDocumentAnalysisOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are a legal AI assistant. Please summarize the key findings from the following document analysis:\n\n{{{analysisResult}}}`,
 });
 

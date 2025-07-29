@@ -11,6 +11,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const FindDocumentContradictionsInputSchema = z.object({
@@ -36,6 +37,7 @@ const findDocumentContradictionsPrompt = ai.definePrompt({
   name: 'findDocumentContradictionsPrompt',
   input: {schema: FindDocumentContradictionsInputSchema},
   output: {schema: FindDocumentContradictionsOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are an expert legal analyst tasked with identifying contradictions between two documents.
 
   Analyze the two documents provided below and generate a detailed report outlining any logical or factual inconsistencies.

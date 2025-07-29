@@ -9,6 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const TranslateLegalDocumentInputSchema = z.object({
@@ -32,6 +33,7 @@ const prompt = ai.definePrompt({
   name: 'translateLegalDocumentPrompt',
   input: {schema: TranslateLegalDocumentInputSchema},
   output: {schema: TranslateLegalDocumentOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are a legal expert specializing in translating legal documents from various Indian regional languages to English.
 
   Translate the following legal document text from {{sourceLanguage}} to English.  Ensure the translation maintains the original meaning and intent of the document.
