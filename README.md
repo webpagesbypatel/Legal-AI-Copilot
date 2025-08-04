@@ -14,14 +14,14 @@
 ## 📸 Visuals & Demo
 
 <!-- ![LegalCopilot Dashboard](https://your-image-link-here.com/dashboard.png) -->
-*Caption: The main toolkit dashboard, providing a central hub for all litigation modules.*
+Live Demo : https://legalcopilot.netlify.app/
 
 ---
 
 ## ✨ Core Features
 
 LegalCopilot is built on a suite of powerful, interconnected modules designed to give you a strategic advantage.
-Live Demo : https://legalcopilot.netlify.app/
+
 
 
 ### 1. 🔍 Document Analysis
