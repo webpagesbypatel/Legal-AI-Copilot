@@ -21,6 +21,8 @@
 ## ✨ Core Features
 
 LegalCopilot is built on a suite of powerful, interconnected modules designed to give you a strategic advantage.
+Live Demo : https://legalcopilot.netlify.app/
+
 
 ### 1. 🔍 Document Analysis
 Uses AI to scan and analyze legal documents for risky clauses, ambiguities, and suboptimal structures.
