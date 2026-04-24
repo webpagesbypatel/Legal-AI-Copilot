@@ -11,10 +11,6 @@
 
 ---
 
-## 📸 Visuals & Demo
-
-<!-- ![LegalCopilot Dashboard](https://your-image-link-here.com/dashboard.png) -->
-Live Demo : https://legalcopilot.netlify.app/
 
 ---
 
