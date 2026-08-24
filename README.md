@@ -157,5 +157,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Designed and Developed by: **webpagesbypatel**
 
-*   **GitHub:** [@webpagesbypatel](https://github.com/susheebypatel)
-*   **Project Repository:** [https://github.com/webpagesbypatel/Legal-Copilot](https://github.com/susheebypatel/Legal-Copilot)
+*   **GitHub:** [@susheebypatel](https://github.com/susheepatel)
+*   **Project Repository:** [https://github.com/susheebypatel/Legal-Copilot](https://github.com/susheepatel/Legal-Copilot)
